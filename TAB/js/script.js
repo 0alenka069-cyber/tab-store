@@ -129,4 +129,8 @@ function toggleCart() {
 
 
 // ===== Запуск после загрузки =====
-document.addEventListener("DOMContentLoaded", renderProducts);
+document.addEventListener("DOMContentLoaded", function () {
+    renderProducts();
+});
+
+
