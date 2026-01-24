@@ -6,20 +6,26 @@
 <title>TAB – The Authentic Boys</title>
 
 <link rel="stylesheet" href="css/style.css">
-<div id="toast" class="toast">Товар добавлен в корзину 🛒</div>
 </head>
 
 <body>
 
-<header>
-    <button class="cart-toggle" onclick="toggleCart()">🛒 Корзина</button>
+<!-- Toast -->
+<div id="toast" class="toast">Товар добавлен в корзину 🛒</div>
 
-    <div class="logo-container">
-    <div class="logo-float">
-        <img src="png/logo2.png" class="logo">
-    </div>
+<!-- Loader -->
+<div id="loader">
+    <div class="loader-logo">TAB</div>
 </div>
 
+<header>
+    <button class="cart-toggle" onclick="toggleCart()">🛒</button>
+
+    <div class="logo-container">
+        <div class="logo-float">
+            <img src="png/logo2.png" class="logo">
+        </div>
+    </div>
 
     <h1>TAB – The Authentic Boys</h1>
 </header>
@@ -35,12 +41,18 @@
     </p>
 </section>
 
+<section class="advantages">
+    <div class="adv-item">🚚 Доставка по РФ</div>
+    <div class="adv-item">🔒 Безопасная оплата</div>
+    <div class="adv-item">💎 Оригинальная продукция</div>
+</section>
+
 <section class="info-section">
     <h2>Контакты</h2>
-    <p>Email: ... </p>
+    <p>Email: ...</p>
     <a href="https://t.me/+hwSosxjH471kMmIy" target="_blank">
-    Наш Telegram
-</a>
+        Наш Telegram
+    </a>
 </section>
 
 <section class="info-section">
@@ -59,7 +71,6 @@
     <div id="cart-items"></div>
     <div id="total" class="total">Итого: 0 ₽</div>
 
-    <!-- ФОРМА -->
     <div class="checkout-form">
         <input type="text" id="fullname" placeholder="ФИО">
         <input type="text" id="city" placeholder="Город">
@@ -69,17 +80,13 @@
         <input type="tel" id="phone" placeholder="Номер телефона">
     </div>
 
-    <button onclick="checkout()">Оплатить</button>
+    <button class="checkout-fixed" onclick="checkout()">
+        Оформить заказ
+    </button>
 </div>
 
-
-<!-- Подключаем JS В САМОМ КОНЦЕ -->
 <script src="js/script.js"></script>
 
 </body>
-<div id="loader">
-    <div class="loader-logo">TAB</div>
-</div>
-
 </html>
 
