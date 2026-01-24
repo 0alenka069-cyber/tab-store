@@ -81,7 +81,6 @@ header {
     transform-style: preserve-3d;
     transition: transform 1.6s cubic-bezier(.2,.6,.2,1),
                 filter 0.6s ease;
-
     filter:
         drop-shadow(0 25px 60px rgba(0,0,0,0.8))
         drop-shadow(0 0 35px rgba(150,200,255,0.25));
@@ -99,9 +98,6 @@ header {
         drop-shadow(0 40px 80px rgba(0,0,0,0.9))
         drop-shadow(0 0 60px rgba(160,210,255,0.45));
 }
-
-
-
 
 /* ===== PRODUCTS ===== */
 
@@ -154,7 +150,56 @@ header {
     font-weight: 600;
     border-radius: 10px;
 }
+.advantages {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 60px 20px;
+    background: linear-gradient(180deg, transparent, rgba(255,255,255,0.02));
+    border-top: 1px solid #1a1a1a;
+    border-bottom: 1px solid #1a1a1a;
+}
 
+.adv-item {
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #cfd4da;
+    opacity: 0.85;
+    transition: 0.3s;
+}
+
+.adv-item:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+}
+
+.product-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    padding: 80px;
+}
+
+.product-gallery img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.product-info .price {
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+.desc {
+    opacity: 0.7;
+    margin-bottom: 30px;
+}
+
+.back-btn {
+    color: #ccc;
+    text-decoration: none;
+    margin-left: 40px;
+}
 
 /* ===== КНОПКИ ===== */
 
@@ -169,6 +214,7 @@ button {
     border-radius: 4px;
     transition: 0.3s;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.164);
+    cursor: pointer;
 }
 
 button:hover {
@@ -187,10 +233,22 @@ button:hover {
     position: fixed;
     top: 20px;
     right: 20px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    font-size: 20px;
     background: #111214;
-    color: #f5f5f5;
     border: 1px solid #2a2a2e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     z-index: 1001;
+    transition: 0.3s;
+}
+
+.cart-toggle:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px rgba(150,200,255,0.3);
 }
 
 /* ===== КОРЗИНА ===== */
@@ -258,6 +316,7 @@ button:hover {
     outline: none;
     border-color: #c0c0c0; /* серебряный акцент */
 }
+
 /* ===== TOAST ===== */
 
 .toast {
@@ -370,24 +429,28 @@ a:hover {
         padding: 10px 14px;
         font-size: 14px;
     }
-}
-@media (max-width: 768px) {
+
     .product button {
         width: 100%;
         font-size: 15px;
         padding: 14px 0;
     }
-}
-@media (max-width: 768px) {
+
     .cart-panel {
         width: 100%;
         padding-bottom: 100px;
     }
-}
-@media (max-width: 768px) {
-    .logo {
-        width: 80vw;
-        max-width: 300px;
+
+    .advantages{
+        flex-direction: column;
+        text-align:center;
+        gap:20px;
+    }
+
+    .product-page{
+        grid-template-columns: 1fr;
+        padding: 30px;
     }
 }
+
 
