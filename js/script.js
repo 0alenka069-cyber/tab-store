@@ -29,7 +29,18 @@ function renderProducts() {
 }
 
 // Добавление в корзину
+function showToast(text) {
+    const toast = document.getElementById("toast");
+    toast.innerText = text;
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2500);
+}
+
 function addToCart(name, price) {
+    showToast("🔥 Товар добавлен в корзину");
     cart.push({ name, price });
     total += price;
     renderCart();
@@ -118,8 +129,7 @@ function checkout() {
         alert("Сервер недоступен");
     });
 
-} // ← ВОТ ЭТОЙ СКОБКИ НЕ ХВАТАЛО
-
+} 
 
 // ===== Открытие / закрытие корзины =====
 function toggleCart() {
@@ -131,5 +141,13 @@ function toggleCart() {
 // ===== Запуск после загрузки =====
 document.addEventListener("DOMContentLoaded", function () {
     renderProducts();
+});
+
+window.addEventListener("load", () => {
+    const loader = document.getElementById("loader");
+    loader.style.opacity = "0";
+    setTimeout(() => {
+        loader.style.display = "none";
+    }, 600);
 });
 
