@@ -1,0 +1,71 @@
+header{
+text-align:center;
+padding:60px 0 40px;
+border-bottom:1px solid #1a1a1a
+}
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:40px;
+padding:60px
+}
+.product{
+padding:20px;
+border-radius:18px;
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
+background:linear-gradient(145deg,rgba(25,25,30,.85),rgba(15,15,18,.9));
+border:1px solid rgba(200,210,220,.08);
+backdrop-filter:blur(8px);
+transform:translateY(20px);
+animation:fadeUp .6s ease forwards
+}
+@media (prefers-reduced-motion:no-preference){
+.product{opacity:0}
+}
+@keyframes fadeUp{to{opacity:1;transform:none}}
+.product:hover{transform:translateY(-6px) scale(1.01);border-color:rgba(210,220,230,.25)}
+.product img{
+width:100%;
+height:340px;
+object-fit:cover;
+border-radius:14px
+}
+.logo-container{perspective:1200px;display:inline-block}
+.logo-float{animation:floatLogo 4s ease-in-out infinite}
+@keyframes floatLogo{
+0%{transform:translateY(0)}
+50%{transform:translateY(-6px)}
+100%{transform:translateY(0)}
+}
+.logo{
+width:500px;
+transform:rotateX(8deg);
+filter:drop-shadow(0 6px 12px rgba(0,0,0,.4))
+}
+.logo.spin{animation:coinSpin .8s ease-in-out}
+@keyframes coinSpin{
+0%{transform:rotateX(8deg) rotateY(0)}
+100%{transform:rotateX(8deg) rotateY(360deg)}
+}
+.advantages{
+display:flex;
+justify-content:center;
+gap:50px;
+padding:70px 20px
+}
+.adv-item{
+font-size:15px;
+letter-spacing:1px;
+color:var(--silver-main);
+opacity:.9;
+transition:.3s
+}
+.adv-item:hover{opacity:1;transform:translateY(-4px)}
+@media (max-width:768px){
+.products{padding:30px}
+.logo{width:120px}
+.advantages{flex-direction:column;gap:25px}
+}

@@ -1,0 +1,31 @@
+.product-page{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+padding:80px;
+text-align:center
+}
+.product-page img{
+width:100%;
+max-width:420px;
+border-radius:18px
+}
+.product img{
+aspect-ratio:3/4;
+}
+.product-page h2{
+font-size:26px;
+margin-bottom:10px
+}
+.product-page p{
+font-size:20px;
+margin-bottom:15px
+}
+@media (max-width:768px){
+.product-page{
+display:flex;
+flex-direction:column;
+gap:20px;
+padding:20px
+}
+}
