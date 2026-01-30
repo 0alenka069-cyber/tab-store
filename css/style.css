@@ -149,7 +149,6 @@ header {
     display: inline-block;
     position: relative;
     transform: rotateX(8deg);
-    backface-visibility: hidden;
     will-change: transform;
     filter: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
 }
@@ -318,6 +317,8 @@ button:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    z-index: 2000;   /* ← ВАЖНО */
 }
 
 .cart-counter {
@@ -474,7 +475,7 @@ button:hover {
     }
 
     .logo {
-        width: 85px;
+        width: 90px;
         filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
         height: auto;
     
@@ -499,5 +500,3 @@ button:hover {
         display: none;
     }
 }
-
-
