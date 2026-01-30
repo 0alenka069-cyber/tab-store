@@ -19,6 +19,17 @@ export function updateCartCounter() {
   cartCounter.textContent = totalQty;
   cartCounter.style.display = totalQty > 0 ? "block" : "none";
 }
+export function showToast(message) {
+  const toast = document.querySelector(".toast");
+  if (!toast) return;
+
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2500);
+}
 
 export function renderCart() {
   const cart = getCart();
@@ -73,3 +84,4 @@ document.getElementById("clearCartBtn")?.addEventListener("click", () => {
   clearCart();
   renderCart();
 });
+
