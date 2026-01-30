@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#000000">
+<meta name="description" content="TAB — премиальный уличный бренд. Лимитированные коллекции.">
+<meta property="og:title" content="TAB – The Authentic Boys">
+<meta property="og:description" content="Премиальный уличный стиль.">
+<meta property="og:image" content="https://0alenka069-cyber.github.io/tab-store/png/og-banner.jpg">
+<meta property="og:url" content="https://0alenka069-cyber.github.io/tab-store/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TAB – The Authentic Boys">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <title>TAB – The Authentic Boys</title>
 
 <link rel="stylesheet" href="css/style.css">
@@ -17,7 +23,7 @@
 <div id="toast" class="toast">Товар добавлен в корзину 🛒</div>
 
 <header>
-    <button class="cart-toggle" onclick="toggleCart()">
+    <button class="cart-toggle" id="cartToggle">
         🛒
         <span id="cartCounter" class="cart-counter"></span>
     </button>
@@ -70,7 +76,7 @@
     <button class="close-btn" onclick="toggleCart()">✖</button>
     <h2>Корзина</h2>
 
-    <button onclick="clearCart()" class="product-btn clear-cart">
+    <button id="clearCartBtn" class="product-btn clear-cart">
         Очистить корзину
     </button>
 
@@ -86,12 +92,12 @@
         <input type="tel" id="phone" placeholder="Номер телефона">
     </div>
 
-    <button class="checkout-fixed" onclick="checkout()">
+    <button class="checkout-fixed" id="checkoutBtn">
         Оформить заказ
     </button>
 </div>
 
-<script src="js/script.js"></script>
+<script type="module" src="js/main.js"></script>
 
 </body>
 </html>
