@@ -7,7 +7,7 @@ export const products = [
   },
   {
     id: 2,
-    name: "TSOSA",
+    name: "SOSA",
     price: 8799,
     image: "png/2.jpg"
   },
@@ -17,4 +17,5 @@ export const products = [
     price: 8799,
     image: "png/3.jpg"
   }
+
 ];
