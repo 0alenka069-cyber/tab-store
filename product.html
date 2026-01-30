@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Товар | TAB</title>
+
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/product.css">
+
+</head>
+
+<body>
+
+<div id="cartOverlay" class="cart-overlay"></div>
+<div id="toast" class="toast"></div>
+
+<button id="cartToggle" class="cart-toggle">
+  🛒
+  <span class="cart-counter" id="cartCounter"></span>
+</button>
+
+<div class="cart-panel" id="cartPanel">
+  <button class="close-btn" id="closeCartBtn">✖</button>
+  <h2>Корзина</h2>
+  <button id="clearCartBtn" class="product-btn clear-cart">Очистить корзину</button>
+  <div id="cart-items"></div>
+  <div id="total">Итого: 0 ₽</div>
+  <button class="checkout-fixed" id="checkoutBtn">Оформить заказ</button>
+</div>
+
+<header>
+  <a href="index.html" class="back-btn">← Назад</a>
+</header>
+
+<section class="product-page">
+  <img id="productImage"
+       width="420"
+       height="560"
+       loading="lazy"
+       decoding="async"
+       alt="">
+
+  <div class="product-info">
+    <h2 id="productName"></h2>
+    <p id="productPrice"></p>
+    <p class="desc">Премиальный streetwear. Лимитированная коллекция TAB.</p>
+    <button class="product-btn" id="addToCartBtn">В корзину</button>
+  </div>
+</section>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

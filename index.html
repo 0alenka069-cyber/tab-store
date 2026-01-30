@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>TAB</title>
+
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/index.css">
+
+
+</head>
+
+<body>
+
+<div id="cartOverlay" class="cart-overlay"></div>
+<div id="toast" class="toast"></div>
+
+<button id="cartToggle" class="cart-toggle">
+  🛒
+  <span class="cart-counter" id="cartCounter"></span>
+</button>
+
+<div class="cart-panel" id="cartPanel">
+  <button class="close-btn" id="closeCartBtn">✖</button>
+  <h2>Корзина</h2>
+  <button id="clearCartBtn" class="product-btn clear-cart">Очистить корзину</button>
+  <div id="cart-items"></div>
+  <div id="total">Итого: 0 ₽</div>
+  <button class="checkout-fixed" id="checkoutBtn">Оформить заказ</button>
+</div>
+
+<header>
+  <div class="logo-container logo-float">
+    <img src="png/logo2.png" class="logo" width="500" height="500" alt="TAB logo">
+  </div>
+  <h1>Премиальный streetwear</h1>
+</header>
+
+<section id="products" class="products"></section>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
