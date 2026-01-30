@@ -434,15 +434,36 @@ button:hover {
         backdrop-filter: none;
     }
 
-    .logo {
-        filter: drop-shadow(0 10px 25px rgba(0,0,0,0.6));
-        animation: mobileSpin 6s linear infinite;
+    .logo-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
+
+    .logo {
+        width: 90px;              /* меньше размер */
+        height: auto;
+        transform-style: preserve-3d;
+    }
+
+    h1 {
+        font-size: 18px;
+        padding: 0 10px;
+        line-height: 1.3;
+    }
+    .logo-float {
+        animation: floatMobile 4s ease-in-out infinite;
+    }
+
+    @keyframes floatMobile {
+        0%,100% { transform: translateY(0px); }
+        50% { transform: translateY(-4px); }
+    }
+}
 
     body::after {
         display: none;
     }
-}
+
 
 
 
