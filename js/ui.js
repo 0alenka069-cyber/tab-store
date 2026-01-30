@@ -19,18 +19,6 @@ export function updateCartCounter() {
   cartCounter.textContent = totalQty;
   cartCounter.style.display = totalQty > 0 ? "block" : "none";
 }
-export function showToast(message) {
-  const toast = document.querySelector(".toast");
-  if (!toast) return;
-
-  toast.textContent = message;
-  toast.classList.add("show");
-
-  setTimeout(() => {
-    toast.classList.remove("show");
-  }, 2500);
-}
-
 export function renderCart() {
   const cart = getCart();
   cartItems.innerHTML = "";
@@ -64,6 +52,17 @@ export function renderCart() {
   totalEl.textContent = `Итого: ${total} ₽`;
   updateCartCounter();
 }
+export function showToast(message) {
+  const toast = document.querySelector(".toast");
+  if (!toast) return;
+
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2500);
+}
 
 /* Делегирование событий */
 cartItems.addEventListener("click", e => {
@@ -84,4 +83,5 @@ document.getElementById("clearCartBtn")?.addEventListener("click", () => {
   clearCart();
   renderCart();
 });
+
 
