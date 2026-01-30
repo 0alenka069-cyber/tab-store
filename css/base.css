@@ -157,3 +157,9 @@ button:hover {
 #loader {
     display: none !important;
 }
+.logo {
+  width: 85px;
+  height: auto;
+  transform: none;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+}
