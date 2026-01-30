@@ -91,7 +91,13 @@ header {
 .adv-item:hover {
     transform: translateY(-4px);
 }
-
+.info-section {
+  padding: 80px 20px;
+  text-align: center;
+  max-width: 800px;
+  margin: auto;
+  border-top: 1px solid #1a1a1a;
+}
 /* MOBILE */
 @media (max-width:768px){
     .products {
@@ -102,3 +108,4 @@ header {
     .logo { width: 85px; }
     body::after { display:none; }
 }
+
