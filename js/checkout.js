@@ -23,21 +23,14 @@ function validateForm() {
 
   return true;
 }
-export function checkout() {
-  const cart = getCart();
-  if (!cart.length) return alert("Корзина пуста");
-
-  clearCart();
-  renderCart();
-  toggleCart(false);
-
-  alert("Заказ оформлен!");
-}
 export async function checkout() {
-
   if (!validateForm()) return;
 
   const cart = getCart();
+  if (!cart.length) {
+    alert("Корзина пуста");
+    return;
+  }
 
   const orderData = {
     customer: {
@@ -49,40 +42,19 @@ export async function checkout() {
       phone: document.getElementById("phone")?.value || ""
     },
     items: cart,
-    total: cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
+    total: cart.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    )
   };
 
-  const btn = document.getElementById("checkoutBtn");
-  if (btn) {
-    btn.disabled = true;
-    btn.innerText = "Отправка...";
-  }
+  // TODO: отправка на сервер (пока mock)
+  console.log("ORDER:", orderData);
 
-  try {
+  clearCart();
+  renderCart();
+  toggleCart(false);
 
-    const response = await fetch("https://tab-backend-0vvu.onrender.com/send-order", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(orderData)
-    });
-
-    const data = await response.json();
-
-    if (data.success) {
-      showToast("Заказ отправлен 🔥");
-      clearCart();
-      renderCart();
-      updateCartCounter();
-    } else {
-      showToast("Ошибка отправки");
-    }
-
-  } catch (error) {
-    showToast("Сервер недоступен");
-  }
-
-  if (btn) {
-    btn.disabled = false;
-    btn.innerText = "Оформить заказ";
-  }
+  alert("Заказ оформлен!");
 }
+
