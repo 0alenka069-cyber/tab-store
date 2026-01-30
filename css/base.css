@@ -157,9 +157,70 @@ button:hover {
 #loader {
     display: none !important;
 }
+
+.logo-container {
+  perspective: 1200px;
+  display: inline-block;
+}
+
+.logo-float {
+  animation: floatLogo 4s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+  0% {
+    transform: translateY(0);
+    filter: drop-shadow(0 8px 12px rgba(0,0,0,0.35));
+  }
+  50% {
+    transform: translateY(-6px);
+    filter: drop-shadow(0 14px 18px rgba(0,0,0,0.45));
+  }
+  100% {
+    transform: translateY(0);
+    filter: drop-shadow(0 8px 12px rgba(0,0,0,0.35));
+  }
+}
+
+.logo {
+  width: 500px;
+  height: auto;
+  transform: rotateX(8deg);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
+}
+.logo.spin {
+  animation: coinSpin 0.8s ease-in-out;
+}
+
+@keyframes coinSpin {
+  0%   { transform: rotateX(8deg) rotateY(0deg); }
+  100% { transform: rotateX(8deg) rotateY(360deg); }
+}
+@media (max-width: 768px)
+.logo-container {
+  perspective: 800px;
+}
+
 .logo {
   width: 85px;
   height: auto;
-  transform: none;
+  transform: none; /* ← ВАЖНО */
   filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
 }
+
+.logo-float {
+  animation: floatMobile 4s ease-in-out infinite;
+}
+
+@keyframes floatMobile {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
