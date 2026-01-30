@@ -149,9 +149,12 @@ header {
     display: inline-block;
     position: relative;
     transform: rotateX(8deg);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
     will-change: transform;
     filter: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
 }
+
 .logo.spin {
     animation: coinSpin 0.8s ease-in-out;
 }
@@ -204,10 +207,24 @@ header {
     background: linear-gradient(145deg,rgba(25,25,30,0.85),rgba(15,15,18,0.9));
     border: 1px solid rgba(200,210,220,0.08);
     backdrop-filter: blur(8px);
+    opacity: 0;
+    transform: translateY(20px);
+    will-change: transform;
+    animation: fadeUp 0.6s ease forwards;
+}
+.product:nth-child(1) { animation-delay: 0.05s; }
+.product:nth-child(2) { animation-delay: 0.1s; }
+.product:nth-child(3) { animation-delay: 0.15s; }
+.product:nth-child(4) { animation-delay: 0.2s; }
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .product:hover {
-    transform: translateY(-6px);
+    transform: translateY(-6px) scale(1.01);
     border-color: rgba(210,220,230,0.25);
 }
 
@@ -216,6 +233,8 @@ header {
     height: 340px;
     object-fit: cover;
     border-radius: 14px;
+    max-width: 100%;
+    display: block;
 }
 
 /* Универсальная кнопка товара */
@@ -270,7 +289,12 @@ button:hover {
     border: 1px solid rgba(255,255,255,0.08);
     transition: 0.35s ease;
 }
-
+.checkout-fixed:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
 .checkout-fixed:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 40px rgba(120,170,255,0.25);
@@ -339,6 +363,7 @@ button:hover {
 
 .cart-panel {
     position: fixed;
+    overscroll-behavior: contain;
     top: 0;
     right: 0;
     width: 340px;
@@ -431,7 +456,8 @@ button:hover {
     }
 
    .product-page img {
-        width: 100%;
+        max-width: 100%;
+        display: block;
         height: auto;
         max-height: 420px;
         object-fit: cover;
@@ -475,7 +501,7 @@ button:hover {
     }
 
     .logo {
-        width: 90px;
+        width: 120px;
         filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
         height: auto;
     
@@ -500,3 +526,5 @@ button:hover {
         display: none;
     }
 }
+
+
