@@ -1,4 +1,6 @@
-// ===== PRODUCTS =====
+// ===============================
+// ===== PRODUCTS ===============
+// ===============================
 
 const products = [
     { name: "LA FLAME", price: 8799, image: "png/1.jpg" },
@@ -7,13 +9,25 @@ const products = [
 ];
 
 
-// ===== CART STATE =====
+// ===============================
+// ===== CART STATE =============
+// ===============================
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
-let total = cart.reduce((sum, item) => sum + item.price, 0);
+
+cart = cart.map(item => ({
+    ...item,
+    quantity: item.quantity ? item.quantity : 1
+}));
+
+function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
 
 
-// ===== TOAST =====
+// ===============================
+// ===== TOAST ==================
+// ===============================
 
 function showToast(text) {
     const toast = document.getElementById("toast");
@@ -24,25 +38,65 @@ function showToast(text) {
 
     setTimeout(() => {
         toast.classList.remove("show");
-    }, 2500);
+    }, 2000);
 }
 
 
-// ===== ADD TO CART =====
+// ===============================
+// ===== ADD TO CART ============
+// ===============================
 
 function addToCart(name, price) {
+    const existing = cart.find(item => item.name === name);
 
-    cart.push({ name, price });
+    if (existing) {
+        existing.quantity += 1;
+    } else {
+        cart.push({ name, price, quantity: 1 });
+    }
 
-    total = cart.reduce((sum, item) => sum + item.price, 0);
-    localStorage.setItem("cart", JSON.stringify(cart));
-
+    saveCart();
     renderCart();
-    showToast("🔥 Товар добавлен в корзину");
+    updateCartCounter();
+    showToast("🔥 Товар добавлен");
 }
 
 
-// ===== RENDER PRODUCTS (index.html) =====
+// ===============================
+// ===== CHANGE QUANTITY ========
+// ===============================
+
+function changeQuantity(index, delta) {
+    if (!cart[index]) return;
+
+    cart[index].quantity += delta;
+
+    if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+    }
+
+    saveCart();
+    renderCart();
+    updateCartCounter();
+}
+
+
+// ===============================
+// ===== CLEAR CART =============
+// ===============================
+
+function clearCart() {
+    cart = [];
+    saveCart();
+    renderCart();
+    updateCartCounter();
+    showToast("🗑 Корзина очищена");
+}
+
+
+// ===============================
+// ===== RENDER PRODUCTS ========
+// ===============================
 
 function renderProducts() {
     const container = document.getElementById("products");
@@ -51,62 +105,112 @@ function renderProducts() {
     container.innerHTML = "";
 
     products.forEach(product => {
-        container.innerHTML += `
-            <div class="product">
-                <a href="product.html?name=${encodeURIComponent(product.name)}">
-                    <img src="${product.image}" alt="${product.name}">
-                    <h3>${product.name}</h3>
-                </a>
-                <p>${product.price} ₽</p>
-                <button onclick="addToCart('${product.name}', ${product.price})">
-                    В корзину
-                </button>
-            </div>
+
+        const card = document.createElement("div");
+        card.className = "product";
+
+        card.innerHTML = `
+            <a href="product.html?name=${encodeURIComponent(product.name)}">
+                <img src="${product.image}" alt="${product.name}">
+                <h3>${product.name}</h3>
+            </a>
+            <p>${product.price} ₽</p>
         `;
+
+        const btn = document.createElement("button");
+        btn.className = "product-btn";
+        btn.textContent = "В корзину";
+        btn.addEventListener("click", () => {
+            addToCart(product.name, product.price);
+        });
+
+        card.appendChild(btn);
+        container.appendChild(card);
     });
 }
 
 
-// ===== RENDER CART =====
+// ===============================
+// ===== RENDER CART ============
+// ===============================
 
 function renderCart() {
-
     const cartItems = document.getElementById("cart-items");
     if (!cartItems) return;
 
     cartItems.innerHTML = "";
-    total = 0;
 
-    cart.forEach(item => {
-        total += item.price;
+    let total = 0;
 
-        cartItems.innerHTML += `
-            <div class="cart-item">
-                ${item.name} — ${item.price} ₽
+    cart.forEach((item, index) => {
+
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+
+        const div = document.createElement("div");
+        div.className = "cart-item";
+
+        div.innerHTML = `
+            <div>
+                <strong>${item.name}</strong><br>
+                ${item.price} ₽ × ${item.quantity}
             </div>
+            <div class="qty-controls">
+                <button onclick="changeQuantity(${index}, -1)">−</button>
+                <span>${item.quantity}</span>
+                <button onclick="changeQuantity(${index}, 1)">+</button>
+            </div>
+            <div>${itemTotal} ₽</div>
         `;
+
+        cartItems.appendChild(div);
     });
 
     const totalElement = document.getElementById("total");
     if (totalElement) {
         totalElement.innerText = "Итого: " + total + " ₽";
     }
-
-    localStorage.setItem("cart", JSON.stringify(cart));
 }
 
 
-// ===== TOGGLE CART =====
+// ===============================
+// ===== CART COUNTER ===========
+// ===============================
+
+function updateCartCounter() {
+    const counter = document.getElementById("cartCounter");
+    if (!counter) return;
+
+    const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+    counter.innerText = totalQty;
+    counter.style.display = totalQty > 0 ? "inline-block" : "none";
+}
+
+
+// ===============================
+// ===== TOGGLE CART ============
+// ===============================
 
 function toggleCart() {
     const panel = document.getElementById("cartPanel");
+    const overlay = document.getElementById("cartOverlay");
+
     if (!panel) return;
 
     panel.classList.toggle("open");
+
+    if (overlay) {
+        overlay.classList.toggle("active");
+    }
+
+    document.body.classList.toggle("cart-open");
 }
 
 
-// ===== PRODUCT PAGE AUTO LOAD =====
+// ===============================
+// ===== PRODUCT PAGE ===========
+// ===============================
 
 function loadProductPage() {
 
@@ -128,14 +232,17 @@ function loadProductPage() {
     if (imgEl) imgEl.src = product.image;
 
     if (btn) {
-        btn.onclick = function () {
+        btn.className = "product-btn";
+        btn.addEventListener("click", () => {
             addToCart(product.name, product.price);
-        };
+        });
     }
 }
 
 
-// ===== CHECKOUT =====
+// ===============================
+// ===== CHECKOUT ===============
+// ===============================
 
 function checkout() {
 
@@ -144,57 +251,29 @@ function checkout() {
         return;
     }
 
-    const fullname = document.getElementById("fullname")?.value;
-    const city = document.getElementById("city")?.value;
-    const street = document.getElementById("street")?.value;
-    const house = document.getElementById("house")?.value;
-    const apartment = document.getElementById("apartment")?.value;
-    const phone = document.getElementById("phone")?.value;
-
-    if (!fullname || !city || !street || !house || !phone) {
-        alert("Заполните все обязательные поля!");
-        return;
-    }
-
-    let message = "🔥 Новый заказ TAB\n\n";
-
-    message += "👤 Клиент:\n";
-    message += `${fullname}\n`;
-    message += `📞 ${phone}\n\n`;
-
-    message += "📦 Адрес доставки:\n";
-    message += `${city}, ${street}, д.${house}`;
-    if (apartment) message += `, кв.${apartment}`;
-    message += "\n\n";
-
-    message += "🛍 Товары:\n";
-
-    cart.forEach(item => {
-        message += `• ${item.name} — ${item.price} ₽\n`;
-    });
-
-    message += `\n💰 Итого: ${total} ₽`;
+    const orderData = {
+        customer: {
+            fullname: document.getElementById("fullname")?.value || "",
+            city: document.getElementById("city")?.value || "",
+            street: document.getElementById("street")?.value || "",
+            house: document.getElementById("house")?.value || "",
+            apartment: document.getElementById("apartment")?.value || "",
+            phone: document.getElementById("phone")?.value || ""
+        },
+        items: cart,
+        total: cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
+    };
 
     fetch("https://tab-backend-0vvu.onrender.com/send-order", {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ message })
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(orderData)
     })
     .then(res => res.json())
     .then(data => {
         if (data.success) {
             alert("Заказ отправлен 🔥");
-
-            cart = [];
-            total = 0;
-            localStorage.setItem("cart", JSON.stringify(cart));
-
-            renderCart();
-
-            document.querySelectorAll(".checkout-form input")
-                .forEach(input => input.value = "");
+            clearCart();
         } else {
             alert("Ошибка отправки");
         }
@@ -205,24 +284,54 @@ function checkout() {
 }
 
 
-// ===== INIT =====
+// ===============================
+// ===== LOGO SPIN ==============
+// ===============================
 
-document.addEventListener("DOMContentLoaded", function () {
+function initLogoSpin() {
 
-    renderProducts();     // безопасно — внутри есть проверка
+    const logo = document.querySelector(".logo");
+    if (!logo) return;
+
+    let isSpinning = false;
+
+    function startSpin() {
+        if (isSpinning) return;
+
+        isSpinning = true;
+        logo.classList.add("spin");
+    }
+
+    logo.addEventListener("mouseenter", startSpin);
+    logo.addEventListener("touchstart", startSpin);
+
+    logo.addEventListener("animationend", () => {
+        logo.classList.remove("spin");
+
+        // небольшой трюк — принудительный reflow
+        void logo.offsetWidth;
+
+        isSpinning = false;
+    });
+}
+
+
+
+// ===============================
+// ===== INIT ====================
+// ===============================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const overlay = document.getElementById("cartOverlay");
+    if (overlay) {
+        overlay.addEventListener("click", toggleCart);
+    }
+
+    renderProducts();
     renderCart();
+    updateCartCounter();
     loadProductPage();
+    initLogoSpin();
 });
 
-
-// ===== LOADER =====
-
-window.addEventListener("load", () => {
-    const loader = document.getElementById("loader");
-    if (!loader) return;
-
-    loader.style.opacity = "0";
-    setTimeout(() => {
-        loader.style.display = "none";
-    }, 600);
-});
