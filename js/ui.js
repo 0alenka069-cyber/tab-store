@@ -32,6 +32,17 @@ export function renderProducts() {
     container.appendChild(card);
   });
 }
+export function showToast(text) {
+  const toast = document.getElementById("toast");
+  if (!toast) return;
+
+  toast.textContent = text;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2000);
+}
 
 export function renderCart() {
   const cartItems = document.getElementById("cart-items");
@@ -133,3 +144,4 @@ export function initLogoSpin() {
     spinning = false;
   });
 }
+
