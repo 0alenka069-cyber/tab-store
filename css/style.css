@@ -379,7 +379,8 @@ button:hover {
 
 
 .cart-panel.open {
-    transform: translateY(0);
+    transform: translateX(0);
+    opacity: 1;
 }
 
 .cart-item {
