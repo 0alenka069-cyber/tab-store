@@ -18,7 +18,15 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("closeCartBtn")?.addEventListener("click", () => {
     toggleCart(false);
   });
+document.addEventListener("DOMContentLoaded", () => {
+  const logo = document.querySelector(".logo");
+  if (!logo) return;
 
+  logo.addEventListener("click", () => {
+    logo.classList.add("spin");
+    setTimeout(() => logo.classList.remove("spin"), 800);
+  });
+});
   document.getElementById("checkoutBtn")?.addEventListener("click", checkout);
 
   /* ГЛАВНАЯ СТРАНИЦА */
@@ -72,4 +80,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateCartCounter();
 });
+
 
