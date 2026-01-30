@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#000000">
 <title>TAB – The Authentic Boys</title>
 
 <link rel="stylesheet" href="css/style.css">
@@ -10,20 +11,20 @@
 
 <body>
 
+<div id="cartOverlay" class="cart-overlay"></div>
+
 <!-- Toast -->
 <div id="toast" class="toast">Товар добавлен в корзину 🛒</div>
 
-<!-- Loader -->
-<div id="loader">
-    <div class="loader-logo">TAB</div>
-</div>
-
 <header>
-    <button class="cart-toggle" onclick="toggleCart()">🛒</button>
+    <button class="cart-toggle" onclick="toggleCart()">
+        🛒
+        <span id="cartCounter" class="cart-counter"></span>
+    </button>
 
     <div class="logo-container">
         <div class="logo-float">
-            <img src="png/logo2.png" class="logo">
+           <img src="png/logo2.png" class="logo">
         </div>
     </div>
 
@@ -31,6 +32,7 @@
 </header>
 
 <section class="products" id="products"></section>
+
 <section class="info-section">
     <h2>About TAB</h2>
     <p>
@@ -50,7 +52,7 @@
 <section class="info-section">
     <h2>Контакты</h2>
     <p>Email: ...</p>
-    <a href="https://t.me/+hwSosxjH471kMmIy" target="_blank">
+    <a href="https://t.me/+hwSosxjH471kMmIy" target="_blank" rel="noopener">
         Наш Telegram
     </a>
 </section>
@@ -67,6 +69,10 @@
 <div class="cart-panel" id="cartPanel">
     <button class="close-btn" onclick="toggleCart()">✖</button>
     <h2>Корзина</h2>
+
+    <button onclick="clearCart()" class="product-btn clear-cart">
+        Очистить корзину
+    </button>
 
     <div id="cart-items"></div>
     <div id="total" class="total">Итого: 0 ₽</div>
