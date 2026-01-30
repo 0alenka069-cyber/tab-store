@@ -422,8 +422,39 @@ button:hover {
     }
 
     .product-page {
-        grid-template-columns: 1fr;
-        padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    text-align: center;   /* ← ВАЖНО */
+    }
+
+   .product-page img {
+        width: 100%;
+        height: auto;
+        max-height: 420px;
+        object-fit: cover;
+        border-radius: 18px;
+    }
+
+    .product-page h2 {
+        font-size: 22px;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .product-page p {
+        font-size: 20px;
+        font-weight: 500;
+        margin: 0;
+        color: #fff;
+    }
+
+    .product-page .product-btn {
+        width: 100%;
+        padding: 16px;
+        font-size: 16px;
+        margin-top: 10px;
     }
 
     .advantages {
