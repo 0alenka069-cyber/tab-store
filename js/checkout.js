@@ -64,12 +64,12 @@ export async function checkout() {
     throw new Error("Ошибка сервера");
   }
 
-  
-  console.log("Показываю тост");
-  showToast("Тест 🚀");
-  clearCart();
-  renderCart();
-  toggleCart(false);
+toggleCart(false);   // сначала закрываем корзину
+clearCart();
+renderCart();
+setTimeout(() => {
+showToast("Заказ успешно отправлен 🚀");
+}, 200);
 
 } catch (error) {
   console.error(error);
@@ -77,6 +77,7 @@ export async function checkout() {
 }
 
 }
+
 
 
 
