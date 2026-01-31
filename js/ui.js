@@ -3,7 +3,7 @@ import { getCart, changeQuantity, removeFromCart, clearCart } from "./cart.js";
 const cartPanel = document.getElementById("cartPanel");
 const cartOverlay = document.getElementById("cartOverlay");
 const cartCounter = document.getElementById("cartCounter");
-const cartItems = document.getElementById("cart-items");
+const cartItems = document.getElementById("cartItems");
 const totalEl = document.getElementById("total");
 
 export function toggleCart(force) {
@@ -86,6 +86,7 @@ document.getElementById("clearCartBtn")?.addEventListener("click", () => {
   clearCart();
   renderCart();
 });
+
 
 
 
