@@ -95,8 +95,11 @@ if (logo) {
   }
 
   updateCartCounter();
-
+ setTimeout(() => {
+  showToast("ПРОВЕРКА 🔥");
+}, 1000);
 });
+
 
 
 
