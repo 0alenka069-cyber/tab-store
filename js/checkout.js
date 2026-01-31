@@ -64,8 +64,9 @@ export async function checkout() {
     throw new Error("Ошибка сервера");
   }
 
-  showToast("Заказ успешно отправлен 🚀");
-
+  
+  console.log("Показываю тост");
+  showToast("Тест 🚀");
   clearCart();
   renderCart();
   toggleCart(false);
@@ -76,6 +77,7 @@ export async function checkout() {
 }
 
 }
+
 
 
 
