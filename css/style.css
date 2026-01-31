@@ -430,24 +430,20 @@ button:hover {
     right: 30px;
     padding: 15px 20px;
     border-radius: 12px;
-    background: linear-gradient(135deg,#1c1f26,#2a2f38);
-    border: 1px solid rgba(255,255,255,0.1);
+    background: #1c1f26;
     color: white;
-    font-weight: 500;
 
     opacity: 0;
     transform: translateY(20px);
-    transition: 0.4s ease;
+    transition: all 0.3s ease;
 
-    z-index: 999999 !important;
-    pointer-events: none;
+    z-index: 999999;
 }
 
 .toast.show {
     opacity: 1;
     transform: translateY(0);
 }
-
 
 #loader {
     display: none !important;
@@ -537,6 +533,7 @@ button:hover {
         display: none;
     }
 }
+
 
 
 
