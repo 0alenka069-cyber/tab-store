@@ -181,6 +181,29 @@ button:hover {
     filter: drop-shadow(0 8px 12px rgba(0,0,0,0.35));
   }
 }
+/* MOBILE */
+@media (max-width:768px){
+    .products {
+        grid-template-columns: 1fr;
+        padding: 25px;
+        gap: 25px;
+    }
+    .product-page {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .product-page > img {
+    width: 100%;
+    height: auto;
+    max-height: 420px;
+  }
+    .logo { width: 85px; }
+    body::after { display:none; }
 }
+}
+
 
 
