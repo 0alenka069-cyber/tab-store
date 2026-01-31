@@ -20,6 +20,8 @@ export function updateCartCounter() {
   cartCounter.style.display = totalQty > 0 ? "block" : "none";
 }
 export function renderCart() {
+  if (!cartItems || !totalEl) return;
+
   const cart = getCart();
   cartItems.innerHTML = "";
 
@@ -65,23 +67,25 @@ export function showToast(message) {
 }
 
 /* Делегирование событий */
-cartItems.addEventListener("click", e => {
-  const btn = e.target;
+if (cartItems) {
+  cartItems.addEventListener("click", e => {
+    const btn = e.target;
 
-  if (btn.dataset.delta) {
-    changeQuantity(+btn.dataset.id, +btn.dataset.delta);
-    renderCart();
-  }
+    if (btn.dataset.delta) {
+      changeQuantity(+btn.dataset.id, +btn.dataset.delta);
+      renderCart();
+    }
 
-  if (btn.dataset.remove) {
-    removeFromCart(+btn.dataset.remove);
-    renderCart();
-  }
-});
+    if (btn.dataset.remove) {
+      removeFromCart(+btn.dataset.remove);
+      renderCart();
+    }
+  });
 
 document.getElementById("clearCartBtn")?.addEventListener("click", () => {
   clearCart();
   renderCart();
 });
+
 
 
