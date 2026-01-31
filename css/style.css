@@ -190,7 +190,15 @@ header {
     0%   { left: -120%; }
     100% { left: 130%; }
 }
+@media (hover: hover) {
+  .logo:hover {
+    animation: coinSpin 0.8s ease-in-out;
+  }
 
+  .logo:hover::after {
+    animation: shineMove 0.9s ease-in-out;
+  }
+}
 
 /* =======================================================
    5. PRODUCT CARD
@@ -517,6 +525,7 @@ button:hover {
         display: none;
     }
 }
+
 
 
 
