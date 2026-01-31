@@ -59,10 +59,6 @@ export function showToast(message) {
   if (!toast) return;
 
   toast.textContent = message;
-  toast.classList.remove("show");
-
-  void toast.offsetWidth; // перезапуск анимации
-
   toast.classList.add("show");
 
   setTimeout(() => {
@@ -91,6 +87,7 @@ document.getElementById("clearCartBtn")?.addEventListener("click", () => {
   clearCart();
   renderCart();
 });
+
 
 
 
