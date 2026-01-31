@@ -75,6 +75,8 @@ export async function checkout() {
   showToast("Ошибка отправки заказа ❌");
 }
 
+}
+
 
 
 
