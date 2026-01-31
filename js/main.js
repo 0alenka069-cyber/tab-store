@@ -23,10 +23,12 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!logo) return;
 
   logo.addEventListener("click", () => {
-    logo.classList.add("spin");
-    setTimeout(() => logo.classList.remove("spin"), 800);
+    logo.classList.remove("spin"); // 1. убрать
+    void logo.offsetWidth;         // 2. форс перерисовки
+    logo.classList.add("spin");    // 3. добавить снова
   });
 });
+
   document.getElementById("checkoutBtn")?.addEventListener("click", checkout);
 
   /* ГЛАВНАЯ СТРАНИЦА */
@@ -80,5 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateCartCounter();
 });
+
 
 
