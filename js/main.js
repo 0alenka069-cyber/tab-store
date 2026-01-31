@@ -92,13 +92,12 @@ if (logo) {
         updateCartCounter();
       });
     }
-  }
-
-  updateCartCounter();
- setTimeout(() => {
+    setTimeout(() => {
   showToast("ПРОВЕРКА 🔥");
 }, 1000);
-});
+
+  }
+ 
 
 
 
