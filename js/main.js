@@ -73,7 +73,7 @@ if (logo) {
     });
   }
 
-  /* СТРАНИЦА ТОВАРА */
+   /* СТРАНИЦА ТОВАРА */
   const addBtn = document.getElementById("addToCartBtn");
   const productImage = document.getElementById("productImage");
 
@@ -90,10 +90,15 @@ if (logo) {
       addBtn.addEventListener("click", () => {
         addToCart(product);
         updateCartCounter();
+        showToast("Товар добавлен в корзину 🛒");
+      });
     }
   }
-});
+
+}); // ← ВАЖНО! Закрываем DOMContentLoaded
+
  
+
 
 
 
