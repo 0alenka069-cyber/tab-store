@@ -3,7 +3,7 @@ import { addToCart } from "./cart.js";
 import { renderCart, toggleCart, updateCartCounter } from "./ui.js";
 import { checkout } from "./checkout.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+ocument.addEventListener("DOMContentLoaded", () => {
 
   /* КНОПКА КОРЗИНЫ */
   document.getElementById("cartToggle")?.addEventListener("click", () => {
@@ -18,8 +18,11 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("closeCartBtn")?.addEventListener("click", () => {
     toggleCart(false);
   });
- const logo = document.querySelector(".logo");
 
+  document.getElementById("checkoutBtn")?.addEventListener("click", checkout);
+
+  /* ЛОГО (мобильный клик) */
+  const logo = document.querySelector(".logo");
   if (logo && window.matchMedia("(hover: none)").matches) {
     logo.addEventListener("click", () => {
       logo.classList.remove("spin");
@@ -27,9 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
       logo.classList.add("spin");
     });
   }
-
-});
-  document.getElementById("checkoutBtn")?.addEventListener("click", checkout);
 
   /* ГЛАВНАЯ СТРАНИЦА */
   const productsContainer = document.getElementById("products");
@@ -81,8 +81,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   updateCartCounter();
-});
 
+});
 
 
 
