@@ -23,13 +23,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ЛОГО (мобильный клик) */
   const logo = document.querySelector(".logo");
-  if (logo && window.matchMedia("(hover: none)").matches) {
-    logo.addEventListener("click", () => {
+
+if (logo) {
+  let isSpinning = false;
+
+  const startSpin = () => {
+    if (isSpinning) return;
+
+    isSpinning = true;
+    logo.classList.add("spin");
+
+    setTimeout(() => {
       logo.classList.remove("spin");
-      void logo.offsetWidth;
-      logo.classList.add("spin");
-    });
+      isSpinning = false;
+    }, 800); // длительность анимации
+  };
+  // мобильный клик
+  if (window.matchMedia("(hover: none)").matches) {
+    logo.addEventListener("click", startSpin);
   }
+}
+
 
   /* ГЛАВНАЯ СТРАНИЦА */
   const productsContainer = document.getElementById("products");
@@ -83,6 +97,11 @@ document.addEventListener("DOMContentLoaded", () => {
   updateCartCounter();
 
 });
+
+
+
+
+
 
 
 
