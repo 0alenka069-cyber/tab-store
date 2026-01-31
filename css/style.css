@@ -439,7 +439,7 @@ button:hover {
     transform: translateY(20px);
     transition: 0.4s ease;
 
-    z-index: 99999;
+    z-index: 999999 !important;
     pointer-events: none;
 }
 
@@ -537,6 +537,7 @@ button:hover {
         display: none;
     }
 }
+
 
 
 
