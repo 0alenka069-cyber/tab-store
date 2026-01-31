@@ -28,18 +28,18 @@ export async function checkout() {
 
   const cart = getCart();
   if (!cart.length) {
-    alert("Корзина пуста");
+    showMessage("Корзина пуста");
     return;
   }
 
   const orderData = {
     customer: {
-      fullname: document.getElementById("fullname")?.value || "",
-      city: document.getElementById("city")?.value || "",
-      street: document.getElementById("street")?.value || "",
-      house: document.getElementById("house")?.value || "",
-      apartment: document.getElementById("apartment")?.value || "",
-      phone: document.getElementById("phone")?.value || ""
+      fullname: document.getElementById("fullname")?.value.trim() || "",
+      city: document.getElementById("city")?.value.trim() || "",
+      street: document.getElementById("street")?.value.trim() || "",
+      house: document.getElementById("house")?.value.trim() || "",
+      apartment: document.getElementById("apartment")?.value.trim() || "",
+      phone: document.getElementById("phone")?.value.trim() || ""
     },
     items: cart,
     total: cart.reduce(
@@ -48,13 +48,25 @@ export async function checkout() {
     )
   };
 
-  // TODO: отправка на сервер (пока mock)
-  console.log("ORDER:", orderData);
+  try {
+    const response = await fetch("https://your-backend-url.com/api/order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(orderData)
+    });
 
-  clearCart();
-  renderCart();
-  toggleCart(false);
+    if (!response.ok) throw new Error("Ошибка сервера");
 
-  alert("Заказ оформлен!");
+    showMessage("Заказ успешно отправлен 🚀");
+
+    clearCart();
+    renderCart();
+    toggleCart(false);
+
+  } catch (error) {
+    console.error(error);
+    showMessage("Ошибка отправки заказа");
+  }
 }
-
