@@ -3,8 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>TAB</title>
+<meta name="description" content="TAB — премиальный уличный бренд. Лимитированные коллекции.">
+<meta property="og:title" content="TAB – The Authentic Boys">
+<meta property="og:description" content="Премиальный уличный стиль.">
+<meta property="og:image" content="https://0alenka069-cyber.github.io/tab-store/png/og-banner.jpg">
+<meta property="og:url" content="https://0alenka069-cyber.github.io/tab-store/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TAB – The Authentic Boys">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<title>TAB – The Authentic Boys</title>
 
 <link rel="stylesheet" href="./css/base.css">
 <link rel="stylesheet" href="./css/index.css">
@@ -14,13 +22,52 @@
 <body>
 
 <div id="cartOverlay" class="cart-overlay"></div>
-<div id="toast" class="toast"></div>
+<div id="toast" class="toast">Товар добавлен в корзину 🛒</div>
+<header>
+    <button class="cart-toggle" id="cartToggle">
+        🛒
+        <span id="cartCounter" class="cart-counter"></span>
+    </button>
 
-<button id="cartToggle" class="cart-toggle">
-  🛒
-  <span class="cart-counter" id="cartCounter"></span>
-</button>
+    <div class="logo-container">
+        <div class="logo-float">
+           <img src="png/logo2.png" class="logo">
+        </div>
+    </div>
+ <h1>TAB – The Authentic Boys</h1>
+</header>
+<section class="products" id="products"></section>
+<section class="info-section">
+    <h2>About TAB</h2>
+    <p>
+        TAB – The Authentic Boys — это бренд для тех,
+        кто выбирает стиль, характер и подлинность.
+        Мы создаём лимитированные коллекции
+        в премиальном уличном стиле.
+    </p>
+</section>
 
+<section class="advantages">
+    <div class="adv-item">🚚 Доставка по РФ</div>
+    <div class="adv-item">🔒 Безопасная оплата</div>
+    <div class="adv-item">💎 Оригинальная продукция</div>
+</section>
+
+<section class="info-section">
+    <h2>Контакты</h2>
+    <p>Email: ...</p>
+    <a href="https://t.me/+hwSosxjH471kMmIy" target="_blank" rel="noopener">
+        Наш Telegram
+    </a>
+</section>
+
+<section class="info-section">
+    <h2>Политика конфиденциальности</h2>
+    <p>
+        Мы используем ваши данные исключительно
+        для обработки заказов и не передаём их третьим лицам.
+    </p>
+</section>
 <div class="cart-panel" id="cartPanel">
   <button class="close-btn" id="closeCartBtn">✖</button>
   <h2>Корзина</h2>
@@ -29,21 +76,19 @@
   <div id="total">Итого: 0 ₽</div>
   <button class="checkout-fixed" id="checkoutBtn">Оформить заказ</button>
 </div>
-
-<header>
- <div class="logo-container">
-  <div class="logo-float">
-    <img src="png/logo2.png" class="logo" width="500" height="500" alt="TAB logo">
+<div class="checkout-form">
+        <input type="text" id="fullname" placeholder="ФИО">
+        <input type="text" id="city" placeholder="Город">
+        <input type="text" id="street" placeholder="Улица">
+        <input type="text" id="house" placeholder="Дом">
+        <input type="text" id="apartment" placeholder="Квартира">
+        <input type="tel" id="phone" placeholder="Номер телефона">
   </div>
-</div>
-  <h1>TAB-The Authentic Boys</h1>
-</header>
-
-<section id="products" class="products"></section>
 
 <script type="module" src="./js/main.js"></script>
 </body>
 </html>
+
 
 
 
