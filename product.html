@@ -36,20 +36,21 @@
 
 <section class="product-page">
   <img id="productImage"
-       width="420"
-       height="560"
-       loading="lazy"
-       decoding="async"
-       alt="">
+      width: 100%;
+  max-width: 420px;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 18px;
 
   <div class="product-info">
     <h2 id="productName"></h2>
-    <p id="productPrice"></p>
-    <p class="desc">Премиальный streetwear. Лимитированная коллекция TAB.</p>
+    <p class="price" id="productPrice"></p>
+    <p class="description" id="productDescription"></p>
     <button class="product-btn" id="addToCartBtn">В корзину</button>
   </div>
 </section>
 
 <script type="module" src="./js/main.js"></script>
 </html>
+
 
