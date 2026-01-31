@@ -384,13 +384,15 @@ button:hover {
 }
 
 .cart-item {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
     align-items: center;
+    gap: 15px;
 }
 
 .qty-controls {
     display: flex;
+    align-items: center;
     gap: 8px;
 }
 
@@ -515,5 +517,6 @@ button:hover {
         display: none;
     }
 }
+
 
 
