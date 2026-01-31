@@ -20,16 +20,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   const logo = document.querySelector(".logo");
   if (!logo) return;
-  if (!logo.classList.contains("spin")) {
-    logo.classList.add("spin");
-    setTimeout(() => logo.classList.remove("spin"), 800);
-}
+  if (logo && window.matchMedia("(hover: none)").matches) {
   logo.addEventListener("click", () => {
-    logo.classList.remove("spin"); // 1. убрать
-    void logo.offsetWidth;         // 2. форс перерисовки
-    logo.classList.add("spin");    // 3. добавить снова
+    logo.classList.remove("spin");
+    void logo.offsetWidth;
+    logo.classList.add("spin");
   });
-  
   document.getElementById("checkoutBtn")?.addEventListener("click", checkout);
 
   /* ГЛАВНАЯ СТРАНИЦА */
@@ -83,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateCartCounter();
 });
+
 
 
 
