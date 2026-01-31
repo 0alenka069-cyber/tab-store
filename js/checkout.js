@@ -1,5 +1,6 @@
 import { getCart, clearCart } from "./cart.js";
-import { renderCart, updateCartCounter, showToast} from "./ui.js";
+import { renderCart, updateCartCounter, showToast, toggleCart } from "./ui.js";
+
 function validateForm() {
   const fullname = document.getElementById("fullname")?.value.trim();
   const phone = document.getElementById("phone")?.value.trim();
@@ -70,5 +71,6 @@ export async function checkout() {
     showToast("Ошибка отправки заказа");
   }
 }
+
 
 
