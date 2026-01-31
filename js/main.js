@@ -48,30 +48,36 @@ if (logo) {
   /* ГЛАВНАЯ СТРАНИЦА */
   const productsContainer = document.getElementById("products");
 
-  if (productsContainer) {
-    products.forEach(product => {
-      const card = document.createElement("div");
-      card.className = "product";
-      card.innerHTML = `
-        <a href="product.html?id=${product.id}">
-          <img src="${product.image}"
-               alt="${product.name}"
-               loading="lazy"
-               decoding="async">
-          <h3>${product.name}</h3>
-          <p>${product.price} ₽</p>
-        </a>
-        <button class="product-btn">В корзину</button>
-      `;
+ if (productsContainer) {
+  products.forEach(product => {
 
-     card.querySelector(".product-btn").addEventListener("click", () => {
-  addToCart(product);
-  updateCartCounter();
-  showToast("Товар добавлен в корзину 🛒");
-});
-      productsContainer.appendChild(card);
+    const card = document.createElement("div");
+    card.className = "product";
+
+    card.innerHTML = `
+      <a href="product.html?id=${product.id}">
+        <img src="${product.image}"
+             alt="${product.name}"
+             loading="lazy"
+             decoding="async">
+        <h3>${product.name}</h3>
+        <p>${product.price} ₽</p>
+      </a>
+      <button class="product-btn">В корзину</button>
+    `;
+
+    const btn = card.querySelector(".product-btn");
+
+    btn.addEventListener("click", () => {
+      addToCart(product);
+      updateCartCounter();
+      showToast("Товар добавлен в корзину 🛒");
     });
-  }
+
+    productsContainer.appendChild(card);
+
+  });
+}
 
    /* СТРАНИЦА ТОВАРА */
   const addBtn = document.getElementById("addToCartBtn");
@@ -98,6 +104,7 @@ if (logo) {
 }); // ← ВАЖНО! Закрываем DOMContentLoaded
 
  
+
 
 
 
