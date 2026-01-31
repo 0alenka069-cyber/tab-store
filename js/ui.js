@@ -81,11 +81,13 @@ if (cartItems) {
       renderCart();
     }
   });
+} // ← ВОТ ЭТОЙ СКОБКИ НЕ ХВАТАЛО
 
 document.getElementById("clearCartBtn")?.addEventListener("click", () => {
   clearCart();
   renderCart();
 });
+
 
 
 
