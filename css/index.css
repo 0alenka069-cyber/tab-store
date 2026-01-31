@@ -98,27 +98,6 @@ header {
   margin: auto;
   border-top: 1px solid #1a1a1a;
 }
-/* MOBILE */
-@media (max-width:768px){
-    .products {
-        grid-template-columns: 1fr;
-        padding: 25px;
-        gap: 25px;
-    }
-    .product-page {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    gap: 20px;
-  }
 
-  .product-page > img {
-    width: 100%;
-    height: auto;
-    max-height: 420px;
-  }
-    .logo { width: 85px; }
-    body::after { display:none; }
-}
 
 
