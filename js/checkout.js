@@ -28,7 +28,7 @@ export async function checkout() {
 
   const cart = getCart();
   if (!cart.length) {
-    showMessage("Корзина пуста");
+    showToast("Корзина пуста");
     return;
   }
 
@@ -59,7 +59,7 @@ export async function checkout() {
 
     if (!response.ok) throw new Error("Ошибка сервера");
 
-    showMessage("Заказ успешно отправлен 🚀");
+    showToast("Заказ успешно отправлен 🚀");
 
     clearCart();
     renderCart();
@@ -67,7 +67,8 @@ export async function checkout() {
 
   } catch (error) {
     console.error(error);
-    showMessage("Ошибка отправки заказа");
+    showToast("Ошибка отправки заказа");
   }
 }
+
 
