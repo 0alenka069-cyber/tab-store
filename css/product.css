@@ -32,31 +32,5 @@
 }
 
 
-@media (max-width:768px){
-    .product-page {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        padding: 20px;
-        text-align: center;
-    }
-    .product-page img {
-        width: 100%;
-        max-height: 420px;
-        object-fit: cover;
-        border-radius: 18px;
-    }
-    .product-page h2 {
-        font-size: 22px;
-        margin: 0;
-    }
-    .product-page p {
-        font-size: 20px;
-        margin: 0;
-    }
-    .product-page .product-btn {
-        width: 100%;
-        font-size: 16px;
-    }
-}
+
 
