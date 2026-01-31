@@ -20,7 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   const logo = document.querySelector(".logo");
   if (!logo) return;
-
+  if (!logo.classList.contains("spin")) {
+    logo.classList.add("spin");
+    setTimeout(() => logo.classList.remove("spin"), 800);
+}
   logo.addEventListener("click", () => {
     logo.classList.remove("spin"); // 1. убрать
     void logo.offsetWidth;         // 2. форс перерисовки
@@ -80,6 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateCartCounter();
 });
+
 
 
 
