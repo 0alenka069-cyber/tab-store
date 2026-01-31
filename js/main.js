@@ -18,14 +18,17 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("closeCartBtn")?.addEventListener("click", () => {
     toggleCart(false);
   });
-  const logo = document.querySelector(".logo");
-  if (!logo) return;
+ const logo = document.querySelector(".logo");
+
   if (logo && window.matchMedia("(hover: none)").matches) {
-  logo.addEventListener("click", () => {
-    logo.classList.remove("spin");
-    void logo.offsetWidth;
-    logo.classList.add("spin");
-  });
+    logo.addEventListener("click", () => {
+      logo.classList.remove("spin");
+      void logo.offsetWidth;
+      logo.classList.add("spin");
+    });
+  }
+
+});
   document.getElementById("checkoutBtn")?.addEventListener("click", checkout);
 
   /* ГЛАВНАЯ СТРАНИЦА */
@@ -79,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateCartCounter();
 });
+
 
 
 
