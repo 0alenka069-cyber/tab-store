@@ -492,7 +492,7 @@ button:hover {
     }
 
     .logo {
-        width: 120px;
+        width: 150px;
         filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
         height: auto;
     
@@ -517,6 +517,7 @@ button:hover {
         display: none;
     }
 }
+
 
 
 
