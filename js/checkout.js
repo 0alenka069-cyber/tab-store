@@ -58,25 +58,35 @@ export async function checkout() {
     body: JSON.stringify(orderData)
   });
 
-  const data = await response.json();
-
-  if (!response.ok || !data.success) {
-    throw new Error("Ошибка сервера");
+  if (!response.ok) {
+    throw new Error(`HTTP ошибка: ${response.status}`);
   }
 
-toggleCart(false);   // сначала закрываем корзину
-clearCart();
-renderCart();
-setTimeout(() => {
-showToast("Заказ успешно отправлен 🚀");
-}, 200);
+  const data = await response.json();
+
+  if (!data.success) {
+    throw new Error("Сервер вернул success: false");
+  }
+
+  // ✅ Сначала закрываем корзину
+  toggleCart(false);
+
+  // ✅ Очищаем
+  clearCart();
+  renderCart();
+
+  // ✅ Потом показываем тост
+  setTimeout(() => {
+    showToast("Заказ успешно отправлен 🚀");
+  }, 200);
 
 } catch (error) {
-  console.error(error);
+  console.error("Ошибка отправки:", error);
   showToast("Ошибка отправки заказа ❌");
 }
 
 }
+
 
 
 
