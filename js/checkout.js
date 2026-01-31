@@ -49,28 +49,33 @@ export async function checkout() {
     )
   };
 
-  try {
-    const response = await fetch("https://tab-backend-0vvu.onrender.com/send-order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(orderData)
-    });
+ try {
+  const response = await fetch("https://tab-backend-0vvu.onrender.com/send-order", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(orderData)
+  });
 
-    if (!response.ok) throw new Error("Ошибка сервера");
+  const data = await response.json();
 
-    showToast("Заказ успешно отправлен 🚀");
-
-    clearCart();
-    renderCart();
-    toggleCart(false);
-
-  } catch (error) {
-    console.error(error);
-    showToast("Ошибка отправки заказа");
+  if (!response.ok || !data.success) {
+    throw new Error("Ошибка сервера");
   }
+
+  showToast("Заказ успешно отправлен 🚀");
+
+  clearCart();
+  renderCart();
+  toggleCart(false);
+
+} catch (error) {
+  console.error(error);
+  showToast("Ошибка отправки заказа ❌");
 }
+
+
 
 
 
