@@ -64,11 +64,11 @@ if (logo) {
         <button class="product-btn">В корзину</button>
       `;
 
-      card.querySelector(".product-btn").addEventListener("click", () => {
-        addToCart(product);
-        updateCartCounter();
-      });
-
+     card.querySelector(".product-btn").addEventListener("click", () => {
+  addToCart(product);
+  updateCartCounter();
+  showToast("Товар добавлен в корзину 🛒");
+});
       productsContainer.appendChild(card);
     });
   }
@@ -90,10 +90,11 @@ if (logo) {
       addBtn.addEventListener("click", () => {
         addToCart(product);
         updateCartCounter();
-      });
     }
   }
+});
  
+
 
 
 
