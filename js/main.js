@@ -3,7 +3,7 @@ import { addToCart } from "./cart.js";
 import { renderCart, toggleCart, updateCartCounter } from "./ui.js";
 import { checkout } from "./checkout.js";
 
-ocument.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
 
   /* КНОПКА КОРЗИНЫ */
   document.getElementById("cartToggle")?.addEventListener("click", () => {
@@ -83,6 +83,7 @@ ocument.addEventListener("DOMContentLoaded", () => {
   updateCartCounter();
 
 });
+
 
 
 
