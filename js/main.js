@@ -1,6 +1,6 @@
 import { products } from "./products.js";
 import { addToCart } from "./cart.js";
-import { renderCart, toggleCart, updateCartCounter } from "./ui.js";
+import { renderCart, toggleCart, updateCartCounter, showToast } from "./ui.js";
 import { checkout } from "./checkout.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -98,6 +98,7 @@ if (logo) {
 
   }
  
+
 
 
 
