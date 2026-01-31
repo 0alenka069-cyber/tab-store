@@ -49,43 +49,46 @@ export async function checkout() {
     )
   };
 
- try {
-  const response = await fetch("https://tab-backend-0vvu.onrender.com/send-order", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(orderData)
-  });
+  const checkoutBtn = document.getElementById("checkoutBtn");
 
-  if (!response.ok) {
-    throw new Error(`HTTP ошибка: ${response.status}`);
+  try {
+    checkoutBtn.disabled = true;
+    checkoutBtn.textContent = "Отправка...";
+
+    const response = await fetch("https://tab-backend-0vvu.onrender.com/send-order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(orderData)
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ошибка: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    if (!data.success) {
+      throw new Error("Сервер вернул success: false");
+    }
+
+    toggleCart(false);
+    clearCart();
+    renderCart();
+
+    setTimeout(() => {
+      showToast("Заказ успешно отправлен 🚀");
+    }, 200);
+
+  } catch (error) {
+    console.error("Ошибка отправки:", error);
+    showToast("Ошибка отправки заказа ❌");
+  } finally {
+    checkoutBtn.disabled = false;
+    checkoutBtn.textContent = "Оформить заказ";
   }
-
-  const data = await response.json();
-
-  if (!data.success) {
-    throw new Error("Сервер вернул success: false");
-  }
-
-  // ✅ Сначала закрываем корзину
-  toggleCart(false);
-
-  // ✅ Очищаем
-  clearCart();
-  renderCart();
-
-  // ✅ Потом показываем тост
-  setTimeout(() => {
-    showToast("Заказ успешно отправлен 🚀");
-  }, 200);
-
-} catch (error) {
-  console.error("Ошибка отправки:", error);
-  showToast("Ошибка отправки заказа ❌");
 }
 
-}
+
 
 
 
