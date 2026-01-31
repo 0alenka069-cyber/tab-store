@@ -49,7 +49,7 @@ export async function checkout() {
   };
 
   try {
-    const response = await fetch("https://your-backend-url.com/api/order", {
+    const response = await fetch("https://tab-backend-0vvu.onrender.com/send-order", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -70,3 +70,4 @@ export async function checkout() {
     showMessage("Ошибка отправки заказа");
   }
 }
+
