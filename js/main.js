@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("closeCartBtn")?.addEventListener("click", () => {
     toggleCart(false);
   });
-document.addEventListener("DOMContentLoaded", () => {
   const logo = document.querySelector(".logo");
   if (!logo) return;
 
@@ -27,8 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     void logo.offsetWidth;         // 2. форс перерисовки
     logo.classList.add("spin");    // 3. добавить снова
   });
-});
-
+  
   document.getElementById("checkoutBtn")?.addEventListener("click", checkout);
 
   /* ГЛАВНАЯ СТРАНИЦА */
@@ -82,6 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateCartCounter();
 });
+
 
 
 
